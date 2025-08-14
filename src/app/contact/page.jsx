@@ -32,7 +32,7 @@ export default function ContactPage() {
     ).join('\n');
 
     // Initialize EmailJS (replace with your actual IDs)
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+    emailjs.init("lNBCPiuAbsQ7TDmLL"); // Replace with your EmailJS public key
 
     const templateParams = {
       ...formData,
@@ -42,8 +42,8 @@ export default function ContactPage() {
 
     try {
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        'service_p2jbrq8', // Replace with your EmailJS service ID
+        'template_iq0ioqt', // Replace with your EmailJS template ID
         templateParams
       );
       
