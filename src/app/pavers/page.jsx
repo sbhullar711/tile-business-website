@@ -15,7 +15,7 @@ export default function PaversPage() {
         {/* Header */}
         <div className="flex justify-between items-center mb-12">
           <div>
-            <h1 className="text-4xl font-bold mb-2">Our Paver Collection</h1>
+            <h1 className="text-gray-600 text-4xl font-bold mb-2">Our Paver Collection</h1>
             <p className="text-gray-600">Durable pavers for driveways, patios, and walkways</p>
           </div>
           

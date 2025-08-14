@@ -15,7 +15,7 @@ export default function TilesPage() {
         {/* Header */}
         <div className="flex justify-between items-center mb-12">
           <div>
-            <h1 className="text-4xl font-bold mb-2">Our Tile Collection</h1>
+            <h1 className="text-gray-600 text-4xl font-bold mb-2">Our Tile Collection</h1>
             <p className="text-gray-600">Premium tiles for every style and budget</p>
           </div>
           

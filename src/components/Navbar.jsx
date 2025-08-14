@@ -1,22 +1,25 @@
 'use client';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
+import Logo from './Logo';
+import { useState } from 'react';
 
 export default function Navbar() {
   const { getCartCount } = useCart();
   const cartCount = getCartCount();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 w-full bg-white shadow-md z-50">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-black">
-            Tile Business
+          <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+            <Logo />
           </Link>
 
-          {/* Navigation Links */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-black font-medium hover:text-blue-600 transition-colors">
               Home
@@ -26,6 +29,9 @@ export default function Navbar() {
             </Link>
             <Link href="/pavers" className="text-black font-medium hover:text-blue-600 transition-colors">
               Pavers
+            </Link>
+            <Link href="/cabinets" className="text-black font-medium hover:text-blue-600 transition-colors">
+              Cabinets
             </Link>
             <Link href="/about" className="text-black font-medium hover:text-blue-600 transition-colors">
               About
@@ -45,7 +51,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-4">
             <Link 
               href="/contact" 
               className="relative inline-flex items-center gap-2 text-black"
@@ -57,8 +63,57 @@ export default function Navbar() {
                 </span>
               )}
             </Link>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="text-black"
+            >
+              {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t">
+            <div className="flex flex-col space-y-4 py-4">
+              <Link 
+                href="/" 
+                className="text-black font-medium px-4 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link 
+                href="/tiles" 
+                className="text-black font-medium px-4 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Tiles
+              </Link>
+              <Link 
+                href="/pavers" 
+                className="text-black font-medium px-4 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Pavers
+              </Link>
+              <Link 
+                href="/cabinets" 
+                className="text-black font-medium px-4 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Cabinets
+              </Link>
+              <Link 
+                href="/about" 
+                className="text-black font-medium px-4 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
