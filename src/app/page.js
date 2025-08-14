@@ -1,44 +1,123 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import { useCart } from '@/context/CartContext';
+
 import Logo from '@/components/Logo';
+import { tilesData, paversData } from '@/data/products';
 
 export default function Home() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Array of hero images - add your image paths here
+  const heroImages = [
+    {
+      src: '/images/hero-background.jpg',
+      alt: 'Premium tiles and pavers showroom'
+    },
+    {
+      src: '/images/hero-2.jpg', // Add second image
+      alt: 'Beautiful tile installation'
+    },
+    {
+      src: '/images/hero-3.jpg', // Add third image
+      alt: 'Outdoor paver patio'
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 6000);
+
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
+
+  // Manual navigation
+  const goToPrevious = () => {
+    setCurrentImageIndex(
+      currentImageIndex === 0 ? heroImages.length - 1 : currentImageIndex - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentImageIndex(
+      currentImageIndex === heroImages.length - 1 ? 0 : currentImageIndex + 1
+    );
+  };
+
+  // Featured products - pick 2 tiles and 2 pavers
+  const featuredProducts = [
+    tilesData[0],
+    tilesData[1],
+    paversData[0],
+    paversData[1]
+  ];
+
   return (
     <main className="min-h-screen">
-      {/* Hero Section with Responsive Background Images */}
+      {/* Hero Section with Carousel - KEEPING YOUR ORIGINAL STYLE */}
       <section className="relative h-screen flex items-center justify-center">
-        {/* Mobile Image - Shows on small screens */}
-        <div className="block md:hidden absolute inset-0">
-          <Image
-            src="/images/hero-background-mobile.jpg" // Portrait/vertical image
-            alt="Premium tiles and pavers"
-            fill
-            className="object-cover"
-            priority
-            quality={85}
-            sizes="100vw"
-          />
-        </div>
-
-        {/* Desktop Image - Shows on larger screens */}
-        <div className="hidden md:block absolute inset-0">
-          <Image
-            src="/images/hero-background.jpg" // Landscape/horizontal image
-            alt="Premium tiles and pavers showroom"
-            fill
-            className="object-cover"
-            priority
-            quality={85}
-            sizes="100vw"
-          />
-        </div>
+        {/* Carousel Images */}
+        {heroImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              className="object-cover"
+              priority={index === 0}
+              quality={85}
+              sizes="100vw"
+            />
+          </div>
+        ))}
         
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/50 z-10"></div>
 
-        {/* Content */}
+        {/* Carousel Navigation Arrows */}
+        <button
+          onClick={goToPrevious}
+          className="absolute left-4 z-30 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all backdrop-blur-sm"
+          aria-label="Previous image"
+        >
+          <FaChevronLeft size={24} />
+        </button>
+        <button
+          onClick={goToNext}
+          className="absolute right-4 z-30 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all backdrop-blur-sm"
+          aria-label="Next image"
+        >
+          <FaChevronRight size={24} />
+        </button>
+
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-2">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`w-2 h-2 rounded-full transition-all ${
+                index === currentImageIndex 
+                  ? 'bg-white w-8' 
+                  : 'bg-white/50 hover:bg-white/75'
+              }`}
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Content - YOUR ORIGINAL LOGO STYLE */}
         <div className="relative z-20 text-center text-white px-4">
           <div className="mb-8">
             <Logo variant="hero" />
@@ -63,9 +142,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Rest of your sections stay the same */}
-      {/* Features Section */}
+      {/* Featured Products Section - NEW */}
       <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-4 text-black">Featured Products</h2>
+          <p className="text-center text-gray-600 mb-12">Check out our most popular items</p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredProducts.map((product) => (
+              <FeaturedProductCard key={product.id} product={product} />
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link 
+              href="/tiles"
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center gap-2"
+            >
+              View All Products <FaArrowRight />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Rest of your sections stay EXACTLY THE SAME */}
+      {/* Features Section */}
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-gray-600 text-4xl font-bold text-center mb-12">Why Choose Us</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -100,7 +202,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories Section - Also update these if you want images */}
+      {/* Categories Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12">Our Products</h2>
@@ -108,9 +210,8 @@ export default function Home() {
             {/* Tiles Card */}
             <Link href="/tiles" className="group cursor-pointer">
               <div className="relative h-96 bg-gray-300 rounded-lg overflow-hidden">
-                {/* You can add images here too */}
                 <Image
-                  src="/images/tiles-category.jpg"  // Add this image
+                  src="/images/tiles-category.jpg"
                   alt="Tiles collection"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -132,7 +233,7 @@ export default function Home() {
             <Link href="/pavers" className="group cursor-pointer">
               <div className="relative h-96 bg-gray-300 rounded-lg overflow-hidden">
                 <Image
-                  src="/images/pavers-category.jpg"  // Add this image
+                  src="/images/pavers-category.jpg"
                   alt="Pavers collection"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -169,5 +270,63 @@ export default function Home() {
         </div>
       </section>
     </main>
+  );
+}
+
+// Simplified Featured Product Card Component
+// Simplified Featured Product Card Component
+function FeaturedProductCard({ product }) {
+  const { addToCart } = useCart();
+  const [added, setAdded] = useState(false);
+
+  const handleAddToCart = (e) => {
+    e.preventDefault(); // Prevent navigation when clicking button
+    addToCart(product);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+  };
+
+  return (
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+      <Link href={`/products/${product.slug || product.id}`}>
+        <div className="cursor-pointer">
+          <div className="h-48 bg-gray-200 relative">
+            <img 
+              src={product.images?.[0] || product.image} 
+              alt={product.name}
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          
+          <div className="p-4">
+            <h3 className="text-lg font-semibold mb-2 text-black hover:text-blue-600 transition-colors">
+              {product.name}
+            </h3>
+            
+            <div className="space-y-1 text-sm text-gray-700 mb-3">
+              <p>Size: {product.size}</p>
+              <p>Type: {product.type}</p>
+            </div>
+          </div>
+        </div>
+      </Link>
+      
+      <div className="px-4 pb-4 flex items-center justify-between">
+        <span className="text-lg font-bold text-blue-600">
+          {product.pricePerSqft || product.price}
+        </span>
+        
+        <button
+          onClick={handleAddToCart}
+          className={`px-3 py-1.5 rounded text-sm font-semibold transition-all ${
+            added 
+              ? 'bg-green-500 text-white' 
+              : 'bg-blue-600 text-white hover:bg-blue-700'
+          }`}
+        >
+          {added ? '✓ Added' : '+ Add'}
+        </button>
+      </div>
+    </div>
   );
 }
