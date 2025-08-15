@@ -84,11 +84,11 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-gray-400">
                 <FaPhone className="flex-shrink-0" />
-                <span>(555) 123-4567</span>
+                <span>(516) 344-1708</span>
               </div>
               <div className="flex items-center gap-3 text-gray-400">
                 <FaEnvelope className="flex-shrink-0" />
-                <span>info@bellerosetiles.com</span>
+                <span>supplybtb@gmail.com</span>
               </div>
               <div className="flex items-start gap-3 text-gray-400">
                 <FaMapMarkerAlt className="flex-shrink-0 mt-1" />
