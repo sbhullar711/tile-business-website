@@ -4,11 +4,11 @@ export const tilesData = [
       name: 'Marble White Deluxe',
       category: 'Tiles',
       images: [
-        '/images/tiles/marble-white-1.jpg',
-        '/images/tiles/marble-white-2.jpg',
+        '/images/tiles/tile1.png',
+        '/images/tiles/tile1.2.png',
         '/images/tiles/marble-white-3.jpg'
       ],
-      image: '/images/tiles/marble-white-1.jpg', // fallback
+      image: '/images/tiles/tile1.jpg', // fallback
       size: '24x24 inches',
       type: 'Porcelain',
       material: 'Porcelain Ceramic',
