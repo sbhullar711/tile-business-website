@@ -66,8 +66,8 @@ export const tilesData = [
       category: 'Tiles',
       images: [
         '/images/tiles/glossyBlack.png',
-        '/images/tiles/glossyBlack1.png',
-        '/images/tiles/glossyBlack2.png'
+        '/images/tiles/glossyblack1.png',
+        '/images/tiles/glossyblack2.png'
       ],
       image: '/images/tiles/glossyBlack.png'',
       size: '12x24 inches',
