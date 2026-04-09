@@ -1,7 +1,7 @@
 export const tilesData = [
     {
       id: 'tile-1',
-      name: 'Marble White Deluxe',
+      name: 'Petra Brown Glossy',
       category: 'Tiles',
       images: [
         '/images/tiles/tile1.png',
@@ -9,18 +9,18 @@ export const tilesData = [
         '/images/tiles/marble-white-3.jpg'
       ],
       image: '/images/tiles/tile1.jpg', // fallback
-      size: '24x24 inches',
+      size: '24x48 inches',
       type: 'Porcelain',
-      material: 'Porcelain Ceramic',
+      material: 'Porcelain',
       finish: 'Polished',
       thickness: '10mm',
-      color: 'White with grey veining',
-      pricePerBox: '$65.00',
-      pricePerSqft: '$12.00',
+      color: 'Brown with white veining',
+      pricePerBox: '$48.00',
+      pricePerSqft: '$2.99',
       sqftPerBox: '16 sq ft',
-      piecesPerBox: '4 pieces',
+      piecesPerBox: '2 pieces',
       weight: '72 lbs per box',
-      description: 'Premium Italian-inspired porcelain tile with realistic marble veining. Perfect for living rooms, kitchens, and bathrooms. Water-resistant and durable.',
+      description: 'Premium porcelain tile with realistic marble veining. Perfect for living rooms, kitchens, and bathrooms. Water-resistant and durable.',
       features: [
         'Water resistant',
         'Scratch resistant', 
@@ -28,7 +28,7 @@ export const tilesData = [
         'Suitable for floor heating'
       ],
       inStock: true,
-      slug: 'marble-white-deluxe'
+      slug: 'petra-brown-glossy'
     },
     {
       id: 'tile-2',
