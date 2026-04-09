@@ -69,7 +69,7 @@ export const tilesData = [
         '/images/tiles/glossyblack1.png',
         '/images/tiles/glossyblack2.png'
       ],
-      image: '/images/tiles/glossyBlack.png'',
+      image: '/images/tiles/glossyBlack.png',
       size: '12x24 inches',
       type: 'Porcelain',
       material: 'Porcelain',
