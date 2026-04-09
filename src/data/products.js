@@ -13,7 +13,7 @@ export const tilesData = [
       type: 'Porcelain',
       material: 'Porcelain',
       finish: 'Polished',
-      thickness: '10mm',
+      thickness: '8mm',
       color: 'Brown with white veining',
       pricePerBox: '$48.00',
       pricePerSqft: '$2.99',
@@ -32,34 +32,33 @@ export const tilesData = [
     },
     {
       id: 'tile-2',
-      name: 'Grey Stone Premium',
+      name: 'Platinum Statuario Glossy',
       category: 'Tiles',
       images: [
-        '/images/tiles/marble-white-1.jpg',
-        '/images/tiles/marble-white-2.jpg',
-        '/images/tiles/marble-white-3.jpg'
+        '/images/tiles/platinumStatuarioTile1.jpeg',
+        '/images/tiles/platinumStatuario.png',
+        '/images/tiles/platinumStatuario2.png'
       ],
-      image: '/images/tiles/marble-white-1.jpg',
-      size: '12x12 inches',
+      image: '/images/tiles/platinumStatuarioTile1.jpeg',
+      size: '12x24 inches',
       type: 'Ceramic',
-      material: 'Ceramic',
-      finish: 'Matte',
+      material: 'Porcelain',
+      finish: 'Glossy',
       thickness: '8mm',
-      color: 'Dark Grey',
-      pricePerBox: '$45.00',
-      pricePerSqft: '$8.00',
-      sqftPerBox: '12 sq ft',
-      piecesPerBox: '12 pieces',
+      color: 'White with grey lines',
+      pricePerBox: '$32.00',
+      pricePerSqft: '$1.99',
+      sqftPerBox: '16 sq ft',
+      piecesPerBox: '4 pieces',
       weight: '55 lbs per box',
-      description: 'Modern grey ceramic tile with matte finish. Ideal for contemporary spaces, bathrooms, and high-traffic areas.',
+      description: 'Modern white porcelin tile with glossy finish. Ideal for bathrooms, Living room, kitcehn, and high-traffic areas.',
       features: [
-        'Slip resistant',
         'Stain resistant',
         'Low maintenance',
         'Fade resistant'
       ],
       inStock: true,
-      slug: 'grey-stone-premium'
+      slug: 'platinum-statuario-glossy'
     },
     {
       id: 'tile-3',
