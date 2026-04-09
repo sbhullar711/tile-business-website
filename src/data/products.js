@@ -62,34 +62,33 @@ export const tilesData = [
     },
     {
       id: 'tile-3',
-      name: 'Wood Look Natural',
+      name: 'Glossy Black Tile',
       category: 'Tiles',
       images: [
-        '/images/tiles/marble-white-1.jpg',
-        '/images/tiles/marble-white-2.jpg',
-        '/images/tiles/marble-white-3.jpg'
+        '/images/tiles/glossyBlack.png',
+        '/images/tiles/glossyBlack1.png',
+        '/images/tiles/glossyBlack2.png'
       ],
-      image: '/images/tiles/marble-white-1.jpg',
-      size: '6x36 inches',
+      image: '/images/tiles/glossyBlack.png'',
+      size: '12x24 inches',
       type: 'Porcelain',
       material: 'Porcelain',
-      finish: 'Textured',
-      thickness: '9mm',
-      color: 'Oak Brown',
-      pricePerBox: '$55.00',
-      pricePerSqft: '$10.00',
-      sqftPerBox: '14.5 sq ft',
-      piecesPerBox: '8 pieces',
+      finish: 'Glossy',
+      thickness: '8mm',
+      color: 'Black',
+      pricePerBox: '$38.00',
+      pricePerSqft: '$1.99',
+      sqftPerBox: '16 sq ft',
+      piecesPerBox: '4 pieces',
       weight: '65 lbs per box',
-      description: 'Realistic wood-look porcelain planks that combine the warmth of hardwood with the durability of tile.',
+      description: 'Premium black porcelain tile.',
       features: [
         'Waterproof',
         'Pet friendly',
         'Scratch resistant',
-        'No warping or swelling'
       ],
       inStock: true,
-      slug: 'wood-look-natural'
+      slug: 'Glossy-Black-Tile'
     },
  
   ];
