@@ -5,8 +5,8 @@ export const tilesData = [
       category: 'Tiles',
       images: [
         '/images/tiles/tile1.png',
-        '/images/tiles/tile1.2.png',
-        '/images/tiles/marble-white-3.jpg'
+        '/images/tiles/petraBrown.png',
+        '/images/tiles/tile1.2.png'
       ],
       image: '/images/tiles/tile1.jpg', // fallback
       size: '24x48 inches',
